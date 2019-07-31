@@ -1,3 +1,20 @@
-<div class="container-fluid text-center bg-dark">
-  <p>teste</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 mt-4">
+      <h2 class="title">Quantidade pessoas: <strong>{{ peoples.count }}</strong></h2>
+
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-sm-6 mt-2" *ngFor="let people of peoples.results">
+      <app-card [header]="people.name" body="People Description" [btnBodyClass]="btnIsValid(people.films.length)"
+        [btnBodyLength]="people.films.length">
+      </app-card>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <ngb-pagination [(page)]="page" [pageSize]="10" [collectionSize]="peoples.count" (click)="getPeoplesPagination()"
+      class="d-flex justify-content-center">
+    </ngb-pagination>
+  </div>
 </div>
